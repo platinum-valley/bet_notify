@@ -1,2 +1,3 @@
 venv/*
+.vscode/*
 line_notify_token.txt
