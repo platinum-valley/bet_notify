@@ -9,3 +9,7 @@ class Notifier:
 
     def notify(self):
         print(self._message)
+
+    @property
+    def message(self):
+        return self._message
