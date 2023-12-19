@@ -11,11 +11,9 @@ class PredLoader:
                 pred = json.load(f)
             return pred
         except FileNotFoundError:
-            print(f"ファイルが見つかりません: {pred_json_path}")
-            return None
+            raise FileNotFoundError(f"ファイルが見つかりません: {pred_json_path}")
         except json.JSONDecodeError:
-            print(f"ファイルのJSON形式が無効です: {pred_json_path}")
-            return None
+            raise json.JSONDecodeError(f"ファイルが見つかりません: {pred_json_path}")
 
     @property
     def data(self):
