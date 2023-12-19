@@ -4,3 +4,4 @@ selenium
 functions_framework
 pytest
 beautifulsoup4
+scipy
