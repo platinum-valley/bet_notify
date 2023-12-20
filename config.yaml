@@ -1,6 +1,9 @@
-# Google Drive API
-credential_json_path: "./credentials.json"
+# Google Drive APIの認証
+google_drive_credential_json_path: "./credentials.json"
 token_json_path: "./token.json"
 
 # Google Drive内の予測JSON
 pred_json_path: "path/to/json/in/google/drive/"
+
+# Line Notifyの認証
+line_notify_credential_path: "path/to/credential/"
