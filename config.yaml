@@ -1,0 +1,6 @@
+# Google Drive API
+credential_json_path: "./credentials.json"
+token_json_path: "./token.json"
+
+# Google Drive内の予測JSON
+pred_json_path: "path/to/json/in/google/drive/"
