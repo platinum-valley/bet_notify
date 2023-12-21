@@ -91,7 +91,7 @@ def notify_bet(config: Dict[str, Any]):
             jyo, int(race_num), syubetu, jyoken, kyori, title if title != "nan" else ""
         )
         Notifier(
-            "a",
+            config["line_notify_credential_path"],
         ).notify(race_title, bet[bet > 0])
 
 
