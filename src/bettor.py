@@ -191,13 +191,15 @@ class OptimizeTansyoBettor(Bettor):
         # 制約条件
         constraints = []
         constraints.append({"type": "ineq", "fun": sum_x_equal_1})
+        """
         constraints.append(
             {"type": "ineq", "fun": all_bet_return_exceed_budget, "args": (budget,)}
         )
+        
         constraints.append(
             {"type": "ineq", "fun": all_bet_upper_minimum_bet, "args": (budget,)}
         )
-
+        """
         # 初期解
         x0 = np.ones(len(odds)) / len(odds)
 
@@ -224,8 +226,10 @@ class OptimizeTansyoBettor(Bettor):
         # 合計掛け金が予算を超えないように調整
         df = self._correct_not_exceed_bet(df, budget)
 
+        print(opts["success"])
+        print(df)
         if opts["success"]:
-            return df["bet"]
+            return df["bet"].astype(int)
         else:
             tmp = pd.Series(np.zeros_like(df["fraction"]), index=df.index)
             tmp["not_bet"] = budget
