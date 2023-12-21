@@ -1,10 +1,11 @@
 import pandas as pd
 from bs4 import BeautifulSoup
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome import service as fs
 from selenium.common.exceptions import NoSuchElementException
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class OddsScraper:
@@ -35,7 +36,7 @@ class OddsScraper:
         options.add_experimental_option("useAutomationExtension", False)
 
         # ドライバー指定でChromeブラウザを開く
-        chrome_service = fs.Service()
+        chrome_service = fs.Service(ChromeDriverManager().install())
 
         # open it, go to a website, and get results
         driver = webdriver.Chrome(service=chrome_service, options=options)
