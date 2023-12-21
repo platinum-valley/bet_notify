@@ -10,7 +10,10 @@ from googleapiclient.http import MediaIoBaseDownload
 
 
 class GoogleDriveJsonReader:
-    _SCOPES = ["https://www.googleapis.com/auth/drive.metadata.readonly"]
+    _SCOPES = [
+        "https://www.googleapis.com/auth/drive.metadata.readonly",
+        "https://www.googleapis.com/auth/drive.readonly",
+    ]
 
     def __init__(self, credentials_json_path, token_json_path, json_path):
         self._creds = self._set_credential(credentials_json_path, token_json_path)
@@ -52,7 +55,7 @@ class GoogleDriveJsonReader:
 
         # ファイルをダウンロード
         request = service.files().get_media(fileId=file_id)
-        file_io = io.ByteIO()
+        file_io = io.BytesIO()
         downloader = MediaIoBaseDownload(file_io, request)
 
         done = False
