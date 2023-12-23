@@ -2,3 +2,11 @@ pandas
 numpy
 selenium
 functions_framework
+pytest
+beautifulsoup4
+scipy
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+pyyaml
+webdriver-manager
