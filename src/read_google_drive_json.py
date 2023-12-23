@@ -24,7 +24,7 @@ class GoogleDriveJsonReader:
         creds = None
 
         creds = Credentials.from_authorized_user_info(
-            os.environ.get("GOOGLE_DRIVE_TOKEN")
+            json.loads(os.environ.get("GOOGLE_DRIVE_TOKEN"))
         )
         return creds
 

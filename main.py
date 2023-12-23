@@ -102,7 +102,7 @@ def main():
 
     while True:
         # 300秒(=5分)ごとに実行
-        notify_bet()
+        notify_bet("a", "a")
 
         time.sleep(300)
 
