@@ -66,6 +66,7 @@ def notify_bet(cloud_event, context):
     now_month_day = now.strftime("%m%d")
     now_time = now.strftime("%H%M")
 
+    print(now_year, now_month_day, now_time)
     # 現在時刻と予測ファイルの時間の開催時間が近いレースがあれば
     for race in get_pred_in_time_range(reader.json, now_year, now_month_day, now_time):
         jyo_cd = race["JyoCD"]
