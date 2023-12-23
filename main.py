@@ -48,7 +48,8 @@ def get_pred_in_time_range(
     return None
 
 
-def notify_bet():
+@functions_framework.cloud_event
+def notify_bet(cloud_event):
     with open("config.yaml", "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
