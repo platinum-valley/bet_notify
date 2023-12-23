@@ -38,11 +38,11 @@ class OddsScraper:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option("useAutomationExtension", False)
         options.add_argument("user-agent=" + UserAgent().random)
-        options.binary_location = os.getcwd() + "/bin/headless-chromium"
+        options.binary_location = "/usr/share/headless-chromium"
 
         # ドライバー指定でChromeブラウザを開く
         # chrome_service = fs.Service(ChromeDriverManager().install())
-        chrome_service = os.getcwd() + "/bin/chromedriver"
+        chrome_service = "/usr/share/chromedriver"
 
         print(chrome_service)
         # open it, go to a website, and get results
