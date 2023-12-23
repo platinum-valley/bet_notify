@@ -7,8 +7,11 @@ class Notifier:
         self,
         access_token_path: str,
     ):
+        """
         with open(access_token_path, "r") as f:
             self._access_token = f.read()
+        """
+        self._access_token = os.environ.get("LINE_NOTIFY_TOKEN")
 
     def notify(self, title: str, bet: pd.Series):
         url = "https://notify-api.line.me/api/notify"

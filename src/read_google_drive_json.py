@@ -23,7 +23,10 @@ class GoogleDriveJsonReader:
         creds = None
 
         if os.path.exists(token_json_path):
-            creds = Credentials.from_authorized_user_file(token_json_path)
+            # creds = Credentials.from_authorized_user_file(token_json_path)
+            creds = Credentials.from_authorized_user_info(
+                os.environ.get("GOOGLE_DRIVE_TOKEN")
+            )
 
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
