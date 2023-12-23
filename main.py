@@ -1,6 +1,7 @@
-import time
 import datetime
+import time
 from typing import Any, Dict
+
 import pandas as pd
 import yaml
 
@@ -16,7 +17,7 @@ def is_time_difference_within_5_to_10_minutes(race_time: str, now_time: str) -> 
 
     Args:
         race_time (str): 比較する最初の時間（"hhmm"形式）。
-        now_time (str): 比較する2番目の時間（"hhmm"形式）。
+        now_time (str): 比較する2番目の時間 ("hhmm"形式）。
 
     Returns:
         bool: 時間の差が5分から10分以内であればTrue、それ以外の場合はFalse。
@@ -47,23 +48,22 @@ def get_pred_in_time_range(
     return None
 
 
-def notify_bet(config: Dict[str, Any]):
+def notify_bet():
+    with open("config.yaml", "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+
     # Google Driveの予測JSONファイルから予測を取得
     reader = GoogleDriveJsonReader(
         config["google_drive_credentials_json_path"],
         config["google_drive_token_json_path"],
         config["pred_json_path"],
     )
+
     # 現在の日時を取得
     now = datetime.datetime.now()
-    """
     now_year = now.strftime("%y")
     now_month_day = now.strftime("%m%d")
     now_time = now.strftime("%H%M")
-    """
-    now_year = "2023"
-    now_month_day = "0528"
-    now_time = "1535"
 
     # 現在時刻と予測ファイルの時間の開催時間が近いレースがあれば
     for race in get_pred_in_time_range(reader.json, now_year, now_month_day, now_time):
@@ -99,7 +99,11 @@ def main():
     with open("config.yaml", "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
-    notify_bet(config)
+    while True:
+        # 300秒(=5分)ごとに実行
+        notify_bet()
+
+        time.sleep(300)
 
 
 if __name__ == "__main__":
