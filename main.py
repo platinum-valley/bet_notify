@@ -2,6 +2,7 @@ import datetime
 import time
 from typing import Any, Dict
 
+import functions_framework
 import pandas as pd
 import yaml
 
