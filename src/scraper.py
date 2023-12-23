@@ -1,10 +1,13 @@
+import os
+
 import pandas as pd
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome import service as fs
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome import service as fs
-from selenium.common.exceptions import NoSuchElementException
-from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -34,9 +37,12 @@ class OddsScraper:
         )
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option("useAutomationExtension", False)
+        options.add_argument("user-agent=" + UserAgent().random)
+        options.binary_location = os.getcwd() + "/bin/headless-chromium"
 
         # ドライバー指定でChromeブラウザを開く
-        chrome_service = fs.Service(ChromeDriverManager().install())
+        # chrome_service = fs.Service(ChromeDriverManager().install())
+        chrome_service = os.getcwd() + "/bin/chromedriver"
 
         # open it, go to a website, and get results
         driver = webdriver.Chrome(service=chrome_service, options=options)
