@@ -3,7 +3,7 @@ google_drive_credentials_json_path: "./credentials.json"
 google_drive_token_json_path: "./token.json"
 
 # Google Drive内の予測JSON
-pred_json_path: "path/to/json/in/google/drive/"
+pred_json_path: "pred.json"
 
 # Line Notifyの認証
-line_notify_credential_path: "path/to/credential/"
+line_notify_credential_path: "line_notify_token.txt"
