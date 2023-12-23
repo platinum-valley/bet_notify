@@ -61,9 +61,11 @@ def notify_bet():
 
     # 現在の日時を取得
     now = datetime.datetime.now()
-    now_year = now.strftime("%y")
+    now_year = now.strftime("%Y")
     now_month_day = now.strftime("%m%d")
     now_time = now.strftime("%H%M")
+
+    print(now_year, now_month_day, now_time)
 
     # 現在時刻と予測ファイルの時間の開催時間が近いレースがあれば
     for race in get_pred_in_time_range(reader.json, now_year, now_month_day, now_time):
@@ -87,7 +89,7 @@ def notify_bet():
         bet = bettor.select_bet(pred, odds)
 
         # 購入馬券を通知する
-        race_title = "{} {}R {} {} {} {}".format(
+        race_title = "{} {}R {} {} {}m {}".format(
             jyo, int(race_num), syubetu, jyoken, kyori, title if title != "nan" else ""
         )
         Notifier(
