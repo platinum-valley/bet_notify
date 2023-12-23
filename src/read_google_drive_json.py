@@ -23,11 +23,9 @@ class GoogleDriveJsonReader:
     def _set_credential(self, credentials_json_path: str, token_json_path: str):
         creds = None
 
-        if os.path.exists(token_json_path):
-            # creds = Credentials.from_authorized_user_file(token_json_path)
-            creds = Credentials.from_authorized_user_info(
-                os.environ.get("GOOGLE_DRIVE_TOKEN")
-            )
+        creds = Credentials.from_authorized_user_info(
+            os.environ.get("GOOGLE_DRIVE_TOKEN")
+        )
         return creds
 
     def _read_json(self, json_path):
