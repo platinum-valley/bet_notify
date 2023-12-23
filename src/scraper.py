@@ -42,7 +42,7 @@ class OddsScraper:
 
         # ドライバー指定でChromeブラウザを開く
         # chrome_service = fs.Service(ChromeDriverManager().install())
-        chrome_service = "/usr/share/chromedriver"
+        chrome_service = fs.Service(executable_path="/usr/share/chromedriver")
 
         # open it, go to a website, and get results
         driver = webdriver.Chrome(executable_path=chrome_service, options=options)
