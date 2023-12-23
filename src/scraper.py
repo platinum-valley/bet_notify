@@ -44,6 +44,7 @@ class OddsScraper:
         # chrome_service = fs.Service(ChromeDriverManager().install())
         chrome_service = os.getcwd() + "/bin/chromedriver"
 
+        print(chrome_service)
         # open it, go to a website, and get results
         driver = webdriver.Chrome(service=chrome_service, options=options)
 
